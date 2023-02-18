@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,8 +9,13 @@ import { HomeComponent } from './pages/home/home.component';
 import { OptionsComponent } from './components/options/options.component';
 
 @NgModule({
-  declarations: [AppComponent, DropDownDirective, HomeComponent, OptionsComponent],
-  imports: [BrowserModule, AppRoutingModule],
+  declarations: [
+    AppComponent,
+    DropDownDirective,
+    HomeComponent,
+    OptionsComponent,
+  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
