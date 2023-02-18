@@ -1,16 +1,20 @@
 <app-options/>
 <h1 class="text-center text-warning pt-5">Angular Quiz Game</h1>
 <h2 class="h1 text-center text-warning py-3">What's your name?</h2>
-<form class="mx-auto w-50 input-group" #nameForm="ngForm">
+<form class="mx-auto w-50 input-group d-flex flex-column" #nameForm="ngForm" (ngSubmit)="onStartGame()">
   <input
     class="w-100 bg-transparent outlined-none rounded form-control text-white input-placeholder-styling"
+    [ngClass]="(!nameForm.valid && nameForm.touched) ? 'border-danger' :''"
     placeholder="Enter your name"
     name="username"
     required
+    ngModel
   />
+  <p *ngIf="(!nameForm.valid && nameForm.touched)" class="my-2 text-danger text-center">To Start Game Please Enter Your Name</p>
   <button
     class="mx-auto mt-2 btn btn-warning rounded-pill text-white"
     type="submit"
+    [disabled]="!nameForm.valid"
   >
     Start Game
   </button>

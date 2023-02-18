@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { DropDownDirective } from './directives/drop-down.directive';
 import { HomeComponent } from './pages/home/home.component';
 import { OptionsComponent } from './components/options/options.component';
+import { QuizComponent } from './pages/quiz/quiz.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { OptionsComponent } from './components/options/options.component';
     DropDownDirective,
     HomeComponent,
     OptionsComponent,
+    QuizComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
