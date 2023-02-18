@@ -1,0 +1,56 @@
+<div class="bg-transparent d-flex pt-3">
+  <div class="dropdown mx-2">
+    <button
+      [appDropDown]="amountOptions"
+      class="btn btn-secondary dropdown-toggle"
+      type="button"
+      id="dropdownMenuButton1"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      Amount of Quiz
+    </button>
+    <ul
+      class="dropdown-menu"
+      aria-labelledby="dropdownMenuButton1"
+      #amountOptions
+    >
+      <li *ngFor="let amount of amountOfQuiz">
+        <button
+          class="dropdown-item"
+          (click)="
+            optionsService.changeSubjectValueHandler(amount, 'amountOfQuiz')
+          "
+        >
+          {{ amount }} {{ amount === 10 ? "(default)" : "" }}
+        </button>
+      </li>
+    </ul>
+  </div>
+  <div class="dropdown">
+    <button
+      [appDropDown]="gameLevelOptions"
+      class="btn btn-secondary dropdown-toggle"
+      type="button"
+      id="dropdownMenuButton1"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      Game Level
+    </button>
+    <ul
+      class="dropdown-menu"
+      aria-labelledby="dropdownMenuButton1"
+      #gameLevelOptions
+    >
+      <li *ngFor="let level of gameLevel">
+        <button
+          class="dropdown-item"
+          (click)="optionsService.changeSubjectValueHandler(level, 'gameLevel')"
+        >
+          {{ level }} {{ level === "easy" ? "(default)" : "" }}
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
