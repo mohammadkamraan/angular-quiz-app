@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { UserDataService } from 'src/app/services/user-data.service';
 
 @Component({
   selector: 'app-home',
@@ -10,10 +11,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class HomeComponent {
   @ViewChild('nameForm')
   nameForm = NgForm;
-
-  constructor(private router: Router) {}
+  userName: string;
+  constructor(private router: Router, private userData: UserDataService) {}
 
   onStartGame() {
+    this.userData.setUserName(this.userName);
     this.router.navigate(['/quiz']);
   }
 }

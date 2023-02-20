@@ -8,8 +8,6 @@ import {
 
 const baseUrl = 'https://opentdb.com/api.php';
 
-// ?amount=20&difficulty=medium
-
 @Injectable({
   providedIn: 'root',
 })

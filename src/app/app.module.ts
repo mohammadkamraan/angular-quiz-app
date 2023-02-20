@@ -8,6 +8,7 @@ import { DropDownDirective } from './directives/drop-down.directive';
 import { HomeComponent } from './pages/home/home.component';
 import { OptionsComponent } from './components/options/options.component';
 import { QuizComponent } from './pages/quiz/quiz.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { QuizComponent } from './pages/quiz/quiz.component';
     OptionsComponent,
     QuizComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
