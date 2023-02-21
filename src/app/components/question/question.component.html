@@ -1,5 +1,30 @@
-<div class="bg-white question_card rounded">
-  <h1 class="text-warning text-center fw-bolder pt-3">
-    score : {{ question.number }} / {{ question.number }}
-  </h1>
+<div class="bg-white question_card rounded" *ngIf="question">
+  <h3 class="text-warning text-center fw-bolder pt-3">
+    score : {{ score }} / {{ questions.length }}
+  </h3>
+  <h3 class="text-warning text-center fw-bolder pt-1">
+    number : {{ questionNumber }} / {{ questions.length }}
+  </h3>
+  <p class="px-3 text-center text-xl fw-bolder fs-5 pt-2">
+    {{ question.question }}
+  </p>
+  <div
+    class="w-50 h-full d-flex flex-column justify-content-center answers_wrapper mx-auto"
+  >
+    <button
+      *ngFor="let answer of question.incorrect_answers; let index = index"
+      class="btn button"
+      [ngClass]="[
+        index % 2 === 0 ? 'my-3' : '',
+        clicked && question.correct_answer === answer
+          ? 'btn-success'
+          : !clicked
+          ? 'btn-primary'
+          : 'btn-danger'
+      ]"
+      (click)="onChoseAnswerHandler(answer)"
+    >
+      {{ answer }}
+    </button>
+  </div>
 </div>

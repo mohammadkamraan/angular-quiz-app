@@ -11,10 +11,10 @@ export class UserDataService {
   setUserName(name: string) {
     this.userName.next(name);
   }
-  incraseUserScore() {
-    this.userScore.subscribe((previousScore) => {
-      this.userScore.next(previousScore + 1);
-    });
-    this.userScore.unsubscribe();
-  }
+  // incraseUserScore() {
+  //   this.userScore.subscribe((previousScore) => {
+  //     this.userScore.next(previousScore + 1);
+  //     this.userScore.unsubscribe();
+  //   });
+  // }
 }

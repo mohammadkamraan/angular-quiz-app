@@ -12,6 +12,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpInterceptorService } from './services/http-intercepter.service';
 import { QuestionComponent } from './components/question/question.component';
 import { SpinerLoadingComponent } from './components/spiner-loading/spiner-loading.component';
+import { ResultComponent } from './pages/result/result.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { SpinerLoadingComponent } from './components/spiner-loading/spiner-loadi
     QuizComponent,
     QuestionComponent,
     SpinerLoadingComponent,
+    ResultComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [

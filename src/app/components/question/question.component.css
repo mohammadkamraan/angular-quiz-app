@@ -1,4 +1,13 @@
 .question_card {
   width: 50rem;
-  height: 30rem;
+  height: 35rem;
+}
+
+.answers_wrapper {
+  height: 20rem;
+}
+
+.button:hover {
+  background-color: #f0ad4e;
+  border: none;
 }

@@ -50,15 +50,15 @@ export class GetQuestionsService {
                       ...question.incorrect_answers,
                       question.correct_answer,
                     ]),
-                    number: index + 1,
+                    number: index,
                   };
                 }),
                 response_code: quizData.response_code,
               };
             })
           )
-          .subscribe(({ results }) => {
-            this.questions.next(results);
+          .subscribe((response) => {
+            this.questions.next(response.results);
             this.loading = false;
           });
       })
