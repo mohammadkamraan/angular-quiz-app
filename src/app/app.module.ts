@@ -8,7 +8,8 @@ import { DropDownDirective } from './directives/drop-down.directive';
 import { HomeComponent } from './pages/home/home.component';
 import { OptionsComponent } from './components/options/options.component';
 import { QuizComponent } from './pages/quiz/quiz.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpInterceptorService } from './services/http-intercepter.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,13 @@ import { HttpClientModule } from '@angular/common/http';
     QuizComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      multi: true,
+      useClass: HttpInterceptorService,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
