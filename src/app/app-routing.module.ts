@@ -1,11 +1,26 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { QuestionComponent } from './components/question/question.component';
 import { HomeComponent } from './pages/home/home.component';
 import { QuizComponent } from './pages/quiz/quiz.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'quiz', component: QuizComponent },
+  {
+    path: 'quiz',
+    component: QuizComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: '1',
+        pathMatch: 'full',
+      },
+      {
+        component: QuestionComponent,
+        path: ':questionIndex',
+      },
+    ],
+  },
 ];
 
 @NgModule({

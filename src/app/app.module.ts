@@ -10,6 +10,7 @@ import { OptionsComponent } from './components/options/options.component';
 import { QuizComponent } from './pages/quiz/quiz.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpInterceptorService } from './services/http-intercepter.service';
+import { QuestionComponent } from './components/question/question.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { HttpInterceptorService } from './services/http-intercepter.service';
     HomeComponent,
     OptionsComponent,
     QuizComponent,
+    QuestionComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [
