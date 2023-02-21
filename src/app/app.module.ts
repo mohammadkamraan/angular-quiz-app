@@ -11,6 +11,7 @@ import { QuizComponent } from './pages/quiz/quiz.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpInterceptorService } from './services/http-intercepter.service';
 import { QuestionComponent } from './components/question/question.component';
+import { SpinerLoadingComponent } from './components/spiner-loading/spiner-loading.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { QuestionComponent } from './components/question/question.component';
     OptionsComponent,
     QuizComponent,
     QuestionComponent,
+    SpinerLoadingComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [

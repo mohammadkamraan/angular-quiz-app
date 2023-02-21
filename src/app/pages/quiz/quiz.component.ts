@@ -7,7 +7,7 @@ import { GetQuestionsService } from 'src/app/services/get-questions.service';
   styleUrls: ['./quiz.component.css'],
 })
 export class QuizComponent implements OnInit {
-  constructor(private getQuestinos: GetQuestionsService) {}
+  constructor(public getQuestinos: GetQuestionsService) {}
 
   ngOnInit(): void {
     this.getQuestinos.getQuestions();

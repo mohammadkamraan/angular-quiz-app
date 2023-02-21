@@ -1,15 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { combineLatest, Subject, Subscription } from 'rxjs';
+import { combineLatest, map, Subject, Subscription } from 'rxjs';
+import { shuffle } from '../utils/suffle';
 import { OptionsService } from './options.service';
 
-interface Question {
+export interface Question {
   category: string;
   correct_answer: string;
   difficulty: 'easy' | 'medium' | 'hard';
   incorrect_answers: string[];
   question: string;
   type: string;
+  number: number;
 }
 
 interface QuizData {
@@ -22,15 +24,15 @@ interface QuizData {
 })
 export class GetQuestionsService {
   questions: Subject<Question[]> = new Subject<Question[]>();
-  question: Subject<Question> = new Subject<Question>();
-  httpSubscription: Subscription;
+  loading = false;
 
   constructor(private http: HttpClient, private options: OptionsService) {}
 
   getQuestions() {
-    combineLatest(this.options.amountOfQuiz, this.options.gameLevel).subscribe(
-      (result) => {
-        this.httpSubscription = this.http
+    combineLatest(this.options.amountOfQuiz, this.options.gameLevel)
+      .subscribe((result) => {
+        this.loading = true;
+        this.http
           .get<QuizData>('', {
             params: {
               amount: result[0],
@@ -38,19 +40,28 @@ export class GetQuestionsService {
             },
             responseType: undefined,
           })
+          .pipe(
+            map<QuizData, QuizData>((quizData) => {
+              return {
+                results: quizData.results.map((question, index) => {
+                  return {
+                    ...question,
+                    incorrect_answers: shuffle([
+                      ...question.incorrect_answers,
+                      question.correct_answer,
+                    ]),
+                    number: index + 1,
+                  };
+                }),
+                response_code: quizData.response_code,
+              };
+            })
+          )
           .subscribe(({ results }) => {
             this.questions.next(results);
+            this.loading = false;
           });
-        this.httpSubscription.unsubscribe();
-        this.questions.unsubscribe();
-      }
-    );
-  }
-  getQuestion(questionIndex: number) {
-    this.questions.subscribe((question) => {
-      this.question.next(question[questionIndex]);
-    });
-    this.questions.unsubscribe();
-    this.question.unsubscribe();
+      })
+      .unsubscribe();
   }
 }

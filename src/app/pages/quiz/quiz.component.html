@@ -1,3 +1,6 @@
 <div class="w-100 h-100 d-flex justify-content-center align-items-center">
-    <router-outlet/>
+    <div>
+        <app-spiner-loading *ngIf="this.getQuestinos.loading" size="small" color="white"></app-spiner-loading>
+    </div>
+    <router-outlet *ngIf="!this.getQuestinos.loading" />
 </div>
