@@ -1,6 +1,6 @@
 .question_card {
-  width: 50rem;
-  height: 35rem;
+  width: 20rem;
+  height: 37rem;
 }
 
 .answers_wrapper {
@@ -79,4 +79,11 @@
 
 .stroke-red-500 {
   stroke: #ef4444;
+}
+
+@media screen and (min-width: 480px) {
+  .question_card {
+    width: 50rem;
+    height: 35rem;
+  }
 }

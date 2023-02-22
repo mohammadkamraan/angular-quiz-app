@@ -44,6 +44,7 @@
           : 'btn-danger'
       ]"
       (click)="onChoseAnswerHandler(answer)"
+      [disabled]="clicked"
     >
       {{ answer }}
     </button>

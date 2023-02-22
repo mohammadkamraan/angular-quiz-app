@@ -68,15 +68,19 @@ export class QuestionComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    interval(1000).subscribe((time) => {
-      this.remainTime -= 1;
-      if (this.remainTime === 0) {
-        this.router.navigate(['result']);
-      }
-    });
     this.routeSubscription = this.route.params.subscribe((params) => {
       this.questionsSubscription = this.questionData.questions.subscribe(
         (questions) => {
+          interval(1000).subscribe((time) => {
+            this.remainTime -= 1;
+            if (this.remainTime === 0) {
+              this.remainTime = time;
+              this.questionNumber += 1;
+              this.router.navigate([`quiz/${this.questionNumber}`], {
+                replaceUrl: false,
+              });
+            }
+          });
           this.questions = questions;
           this.question = questions[+params['questionIndex'] - 1];
         }
