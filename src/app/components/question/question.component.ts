@@ -1,6 +1,6 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { interval, Subscription } from 'rxjs';
 import {
   GetQuestionsService,
   Question,
@@ -22,6 +22,8 @@ export class QuestionComponent implements OnInit, OnDestroy {
   score: number;
   scoreSubscription: Subscription;
   questionNumber = 1;
+  initialTime = 60;
+  remainTime = 60;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -45,10 +47,33 @@ export class QuestionComponent implements OnInit, OnDestroy {
         this.router.navigate(['result']);
       }
       this.clicked = false;
+      this.remainTime = 60;
     }, 2000);
   }
 
+  calculateTimeFraction() {
+    return this.remainTime / this.initialTime;
+  }
+
+  dashArrayHandler() {
+    return `${(this.calculateTimeFraction() * 283).toFixed(0)} 283`;
+  }
+
+  switchRingColor() {
+    if (this.remainTime >= 40) return 'stroke-green-500';
+    else if (this.remainTime >= 30) return 'stroke-teal-300';
+    else if (this.remainTime >= 10) return 'stroke-amber-300';
+    else if (this.remainTime <= 10) return 'stroke-red-500';
+    return '';
+  }
+
   ngOnInit(): void {
+    interval(1000).subscribe((time) => {
+      this.remainTime -= 1;
+      if (this.remainTime === 0) {
+        this.router.navigate(['result']);
+      }
+    });
     this.routeSubscription = this.route.params.subscribe((params) => {
       this.questionsSubscription = this.questionData.questions.subscribe(
         (questions) => {

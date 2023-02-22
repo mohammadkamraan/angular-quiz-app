@@ -5,6 +5,27 @@
   <h3 class="text-warning text-center fw-bolder pt-1">
     number : {{ questionNumber }} / {{ questions.length }}
   </h3>
+  <!-- question timer -->
+  <div class="position-relative timer_wrapper mx-auto">
+    <svg
+      class="transform"
+      viewBox="0 0 100 100"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g class="count_down_g_tag">
+        <circle class="circle_tag" cx="50" cy="50" r="45"></circle>
+        <path
+          id="base-timer-path-remaining"
+          [attr.stroke-dasharray]="dashArrayHandler()"
+          class="path_tag transform"
+          [ngClass]="switchRingColor()"
+          d=" M 50, 50 m -45, 0 a 45,45 0 1,0 90,0 a 45,45 0 1,0 -90,0 "
+        ></path>
+      </g>
+    </svg>
+    <span class="remain-time fs-4"> {{ remainTime }} </span>
+  </div>
+
   <p class="px-3 text-center text-xl fw-bolder fs-5 pt-2">
     {{ question.question }}
   </p>

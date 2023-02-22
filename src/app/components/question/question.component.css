@@ -11,3 +11,72 @@
   background-color: #f0ad4e;
   border: none;
 }
+
+.timer_wrapper {
+  width: 4rem;
+  height: 4rem;
+}
+
+.timer_color {
+  stroke: green;
+}
+
+.transform {
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-scale-x: 1;
+  transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y))
+    rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y))
+    scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.count_down_g_tag {
+  stroke-width: 0;
+  fill: none;
+}
+
+.circle_tag {
+  stroke-width: 7px;
+  stroke: #6b7280;
+}
+
+.path_tag {
+  stroke-width: 7px;
+  transform: rotate(90deg);
+  transform-origin: center;
+  transition: all;
+  transition-duration: 1000ms;
+  stroke-linecap: round;
+}
+
+.remain-time {
+  /* absolute w-16 h-16 top-0 flex items-center justify-center text-2xl */
+  position: absolute;
+  width: 4rem;
+  height: 4rem;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stroke-green-500 {
+  stroke: #22c55e;
+}
+
+.stroke-teal-300 {
+  stroke: #5eead4;
+}
+
+.stroke-amber-300 {
+  stroke: #f59e0b;
+}
+
+.stroke-red-500 {
+  stroke: #ef4444;
+}
