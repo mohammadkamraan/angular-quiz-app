@@ -16,6 +16,6 @@ export class HomeComponent {
 
   onStartGame() {
     this.userData.userName = this.userName;
-    this.router.navigate(['/quiz']);
+    this.router.navigate(['/quiz/1']);
   }
 }
