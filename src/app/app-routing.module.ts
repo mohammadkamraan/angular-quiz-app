@@ -14,11 +14,6 @@ const routes: Routes = [
     canActivate: [QuizAuthService],
     children: [
       {
-        path: '',
-        redirectTo: '1',
-        pathMatch: 'full',
-      },
-      {
         component: QuestionComponent,
         path: ':questionIndex',
       },
@@ -27,7 +22,9 @@ const routes: Routes = [
   {
     path: 'result',
     component: ResultComponent,
+    canActivate: [QuizAuthService],
   },
+  { path: '**', redirectTo: '/' },
 ];
 
 @NgModule({
