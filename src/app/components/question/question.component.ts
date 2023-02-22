@@ -42,6 +42,7 @@ export class QuestionComponent implements OnInit, OnDestroy {
           replaceUrl: false,
         });
       } else {
+        this.router.navigate(['result']);
       }
       this.clicked = false;
     }, 2000);

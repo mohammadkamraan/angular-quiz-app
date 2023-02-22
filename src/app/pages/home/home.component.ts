@@ -15,7 +15,7 @@ export class HomeComponent {
   constructor(private router: Router, private userData: UserDataService) {}
 
   onStartGame() {
-    this.userData.setUserName(this.userName);
+    this.userData.userName = this.userName;
     this.router.navigate(['/quiz']);
   }
 }

@@ -5,16 +5,6 @@ import { BehaviorSubject, Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class UserDataService {
-  userName: Subject<string> = new Subject<string>();
+  userName: string;
   userScore: Subject<number> = new BehaviorSubject<number>(0);
-
-  setUserName(name: string) {
-    this.userName.next(name);
-  }
-  // incraseUserScore() {
-  //   this.userScore.subscribe((previousScore) => {
-  //     this.userScore.next(previousScore + 1);
-  //     this.userScore.unsubscribe();
-  //   });
-  // }
 }

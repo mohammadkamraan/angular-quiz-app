@@ -1,1 +1,12 @@
-<p>result works!</p>
+<div class="d-flex flex-column justify-content-center align-items-center h-100">
+  <p class="fw-bolder text-white fs-2">
+    {{ amountOfQuestions === score ? completeText : notCompeleteText }}
+    {{ userName }}
+  </p>
+  <p class="fw-bolder text-white fs-2">
+    your score is : {{ score }} / {{ amountOfQuestions }}
+  </p>
+  <a [routerLink]="['/']" class="btn btn-warning btn-lg text-white"
+    >Start again</a
+  >
+</div>
