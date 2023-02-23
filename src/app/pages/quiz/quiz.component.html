@@ -1,6 +1,13 @@
 <div class="w-100 h-100 d-flex justify-content-center align-items-center">
-    <div>
-        <app-spiner-loading *ngIf="this.getQuestinos.loading" size="small" color="white"></app-spiner-loading>
+    <div *ngIf="this.getQuestinos.loading">
+        <app-spiner-loading size="small" color="white"></app-spiner-loading>
+    </div>
+    <div *ngIf="this.getQuestinos.error">
+        <div class="w-25">
+            <figure class="img-fluid rounded">
+                <img src="../../../assets//images/some-thing-went-wrong.jpeg" alt="something-went-wrong"/>
+            </figure>
+        </div>
     </div>
     <router-outlet />
 </div>

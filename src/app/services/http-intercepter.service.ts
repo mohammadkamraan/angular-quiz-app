@@ -14,7 +14,7 @@ const baseUrl = 'https://opentdb.com/api.php';
 export class HttpInterceptorService implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler) {
     const modifiedRequest: HttpRequest<any> = request.clone({
-      url: baseUrl,
+      url: baseUrl + request.url,
       params: request.params.append('type', 'multiple'),
     });
     return next.handle(modifiedRequest);

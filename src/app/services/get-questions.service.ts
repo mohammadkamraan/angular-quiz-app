@@ -24,6 +24,7 @@ interface QuizData {
 })
 export class GetQuestionsService {
   questions: Subject<Question[]> = new Subject<Question[]>();
+  error: any;
   loading = false;
 
   constructor(private http: HttpClient, private options: OptionsService) {}
@@ -57,10 +58,16 @@ export class GetQuestionsService {
               };
             })
           )
-          .subscribe((response) => {
-            this.questions.next(response.results);
-            this.loading = false;
-          });
+          .subscribe(
+            (response) => {
+              this.questions.next(response.results);
+              this.loading = false;
+            },
+            (error) => {
+              this.error = error;
+              this.loading = false;
+            }
+          );
       })
       .unsubscribe();
   }

@@ -1,9 +1,9 @@
-.question_card {
+.question-card {
   width: 20rem;
   height: 37rem;
 }
 
-.answers_wrapper {
+.answers-wrapper {
   height: 20rem;
 }
 
@@ -12,12 +12,12 @@
   border: none;
 }
 
-.timer_wrapper {
+.timer-wrapper {
   width: 4rem;
   height: 4rem;
 }
 
-.timer_color {
+.timer-color {
   stroke: green;
 }
 
@@ -35,17 +35,17 @@
     scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.count_down_g_tag {
+.count-down-g-tag {
   stroke-width: 0;
   fill: none;
 }
 
-.circle_tag {
+.circle-tag {
   stroke-width: 7px;
   stroke: #6b7280;
 }
 
-.path_tag {
+.path-tag {
   stroke-width: 7px;
   transform: rotate(90deg);
   transform-origin: center;

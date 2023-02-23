@@ -1,4 +1,4 @@
-<div class="bg-white question_card rounded" *ngIf="question">
+<div class="bg-white question-card rounded" *ngIf="question">
   <h3 class="text-warning text-center fw-bolder pt-3">
     score : {{ score }} / {{ questions.length }}
   </h3>
@@ -6,13 +6,13 @@
     number : {{ questionNumber }} / {{ questions.length }}
   </h3>
   <!-- question timer -->
-  <div class="position-relative timer_wrapper mx-auto">
+  <div class="position-relative timer-wrapper mx-auto">
     <svg
       class="transform"
       viewBox="0 0 100 100"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g class="count_down_g_tag">
+      <g class="count-down-g-tag">
         <circle class="circle_tag" cx="50" cy="50" r="45"></circle>
         <path
           id="base-timer-path-remaining"
@@ -30,7 +30,7 @@
     {{ question.question }}
   </p>
   <div
-    class="w-50 h-full d-flex flex-column justify-content-center answers_wrapper mx-auto"
+    class="w-50 h-full d-flex flex-column justify-content-center answers-wrapper mx-auto"
   >
     <button
       *ngFor="let answer of question.incorrect_answers; let index = index"
