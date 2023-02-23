@@ -74,7 +74,7 @@ export class QuestionComponent implements OnInit, OnDestroy {
           interval(1000).subscribe((time) => {
             this.remainTime -= 1;
             if (this.remainTime === 0) {
-              this.remainTime = time;
+              this.remainTime = this.initialTime;
               this.questionNumber += 1;
               this.router.navigate([`quiz/${this.questionNumber}`], {
                 replaceUrl: false,
