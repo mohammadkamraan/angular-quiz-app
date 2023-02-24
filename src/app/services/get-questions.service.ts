@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { combineLatest, map, Subject, Subscription } from 'rxjs';
+import { map, Subject, Subscription } from 'rxjs';
 import { shuffle } from '../utils/suffle';
 import { OptionsService } from './options.service';
 
@@ -26,49 +26,48 @@ export class GetQuestionsService {
   questions: Subject<Question[]> = new Subject<Question[]>();
   error: any;
   loading = false;
+  httpSubsciption: Subscription;
 
   constructor(private http: HttpClient, private options: OptionsService) {}
 
   getQuestions() {
-    combineLatest(this.options.amountOfQuiz, this.options.gameLevel)
-      .subscribe((result) => {
-        this.loading = true;
-        this.http
-          .get<QuizData>('', {
-            params: {
-              amount: result[0],
-              difficulty: result[1],
-            },
-            responseType: undefined,
-          })
-          .pipe(
-            map<QuizData, QuizData>((quizData) => {
-              return {
-                results: quizData.results.map((question, index) => {
-                  return {
-                    ...question,
-                    incorrect_answers: shuffle([
-                      ...question.incorrect_answers,
-                      question.correct_answer,
-                    ]),
-                    number: index,
-                  };
-                }),
-                response_code: quizData.response_code,
-              };
-            })
-          )
-          .subscribe(
-            (response) => {
-              this.questions.next(response.results);
-              this.loading = false;
-            },
-            (error) => {
-              this.error = error;
-              this.loading = false;
-            }
-          );
+    this.loading = true;
+    this.httpSubsciption = this.http
+      .get<QuizData>('', {
+        params: {
+          amount: this.options.amountOfQuiz,
+          difficulty: this.options.gameLevel,
+        },
+        responseType: undefined,
       })
-      .unsubscribe();
+      .pipe(
+        map<QuizData, QuizData>((quizData) => {
+          return {
+            results: quizData.results.map((question, index) => {
+              return {
+                ...question,
+                incorrect_answers: shuffle([
+                  ...question.incorrect_answers,
+                  question.correct_answer,
+                ]),
+                number: index,
+              };
+            }),
+            response_code: quizData.response_code,
+          };
+        })
+      )
+      .subscribe(
+        (quiz) => {
+          this.questions.next(quiz.results);
+          this.loading = false;
+          this.httpSubsciption.unsubscribe();
+        },
+        (error) => {
+          this.error = error;
+          this.loading = false;
+          this.httpSubsciption.unsubscribe();
+        }
+      );
   }
 }

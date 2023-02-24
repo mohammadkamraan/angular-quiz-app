@@ -7,6 +7,6 @@ import { OptionsService } from 'src/app/services/options.service';
 })
 export class OptionsComponent {
   amountOfQuiz: number[] = [10, 20, 30, 40, 50];
-  gameLevel: string[] = ['easy', 'hard', 'medium'];
+  gameLevel: string[] = ['easy', 'medium', 'hard'];
   constructor(public optionsService: OptionsService) {}
 }

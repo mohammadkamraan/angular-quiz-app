@@ -24,10 +24,11 @@ export class ResultComponent implements OnInit {
         this.score = userScore;
       })
       .unsubscribe();
-    this.gameOptions.amountOfQuiz
-      .subscribe((amount) => {
-        this.amountOfQuestions = amount;
-      })
-      .unsubscribe();
+    // this.gameOptions.amountOfQuiz
+    //   .subscribe((amount) => {
+    //     this.amountOfQuestions = amount;
+    //   })
+    //   .unsubscribe();
+    this.amountOfQuestions = this.gameOptions.amountOfQuiz;
   }
 }

@@ -19,7 +19,7 @@
         <button
           class="dropdown-item"
           (click)="
-            optionsService.changeSubjectValueHandler(amount, 'amountOfQuiz')
+            optionsService.changeGameOptionHandler(amount, 'amountOfQuiz')
           "
         >
           {{ amount }} {{ amount === 10 ? "(default)" : "" }}
@@ -46,7 +46,7 @@
       <li *ngFor="let level of gameLevel">
         <button
           class="dropdown-item"
-          (click)="optionsService.changeSubjectValueHandler(level, 'gameLevel')"
+          (click)="optionsService.changeGameOptionHandler(level, 'gameLevel')"
         >
           {{ level }} {{ level === "easy" ? "(default)" : "" }}
         </button>

@@ -1,6 +1,6 @@
 .question-card {
-  width: 20rem;
-  height: 37rem;
+  width: 50rem;
+  height: 35rem;
 }
 
 .answers-wrapper {
@@ -83,7 +83,7 @@
 
 @media screen and (min-width: 480px) {
   .question_card {
-    width: 50rem;
-    height: 35rem;
+    width: 20rem;
+    height: 37rem;
   }
 }

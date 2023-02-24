@@ -1,21 +1,22 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
+
+export type GameLevel = 'easy' | 'medium' | 'hard';
+export type AmountOfQuiz = 10 | 20 | 30 | 40 | 50;
 
 @Injectable({
   providedIn: 'root',
 })
 export class OptionsService {
-  gameLevel: Subject<string> = new BehaviorSubject<string>('easy');
-  amountOfQuiz: Subject<number> = new BehaviorSubject<number>(10);
-
-  changeSubjectValueHandler(
+  gameLevel: GameLevel = 'easy';
+  amountOfQuiz: AmountOfQuiz = 10;
+  changeGameOptionHandler(
     value: string | number,
-    subject: 'gameLevel' | 'amountOfQuiz'
+    option: 'gameLevel' | 'amountOfQuiz'
   ) {
-    if (subject === 'gameLevel') {
-      this.gameLevel.next(value as string);
+    if (option === 'gameLevel') {
+      this.gameLevel = value as GameLevel;
     } else {
-      this.amountOfQuiz.next(value as number);
+      this.amountOfQuiz = value as AmountOfQuiz;
     }
   }
 }
